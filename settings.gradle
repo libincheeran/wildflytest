@@ -1,0 +1,4 @@
+rootProject.name = 'wildflywar'
+include 'ejb'
+include 'web'
+
