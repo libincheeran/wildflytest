@@ -31,7 +31,7 @@ public class EjbClient {
 
         private static TextProcessorRemote lookupBean(String namespace) throws NamingException {
             Context ctx = createInitialContext();
-            String appName = "";
+            String appName = "ars";
             String moduleName = "web";
             String distinctName = "";
             String beanName = TextProcessorBean.class.getSimpleName();

@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'ear'
 }
 
 group 'wildflywar'
@@ -13,4 +14,40 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+ear {
+    appDirName 'ars'
+    libDirName 'APP-INF/lib'
+    archiveName = 'ars.ear'
+    destinationDir = file('build')
+    excludes = ["tmp", ".*"] as Set
+
+    //exclude the src and doc jar files from the ear package
+    configurations.archives {
+        exclude '*-sources.jar'
+        exclude '*-javadoc.jar'
+    }
+
+    dependencies {
+        //deploy project(path: ':ars-gui', configuration: 'archives')
+        deploy project(path: ':web', configuration: 'archives')
+        earlib project(path: ':ejb', configuration: 'archives')
+    }
+
+    configurations.earlib {
+        exclude '*-sources.jar'
+        exclude '*-javadoc.jar'
+        exclude module: 'antlr'
+    }
+
+    manifest {
+        attributes("Implementation-Title": archiveName,
+                "Implementation-Vendor-Id": "PDX, Inc.",
+                "Implementation-Build": 1,
+                "Built-By": System.getProperty("user.name"),
+                "Build-Jdk": System.getProperty("java.version"),
+                "Gradle-Version": gradle.gradleVersion,
+                "Weblogic-Application-Version": version)
+    }
 }
