@@ -26,7 +26,7 @@ ear {
     dependencies {
         //deploy project(path: ':ars-gui', configuration: 'archives')
         deploy project(path: ':web', configuration: 'archives')
-        earlib project(path: ':ejb', configuration: 'archives')
+        deploy project(path: ':ejb', configuration: 'archives')
     }
     manifest {
         attributes("Implementation-Title": archiveName,
