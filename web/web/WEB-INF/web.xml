@@ -11,4 +11,20 @@
         <servlet-name>MyServlet</servlet-name>
         <url-pattern>/libin</url-pattern>
     </servlet-mapping>
+
+    <ejb-local-ref>
+        <ejb-ref-name>ejb/Adder</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>com.libin.ejb.AdderLocal</local>
+        <!--<ejb-link>ejb.jar#AdderImpl</ejb-link>-->
+    </ejb-local-ref>
+
+    <!--<ejb-local-ref>
+        <ejb-ref-name>ejb/Multiplier</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>com.libin.ejb.MultiplierLocal</local>
+        <ejb-link>ejb.jar#MultiplierImpl</ejb-link>
+    </ejb-local-ref>-->
+
+
 </web-app>

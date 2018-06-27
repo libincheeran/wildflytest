@@ -13,8 +13,8 @@ repositories {
 }
 
 dependencies {
-    compile( group: 'javax', name: 'javaee-api', version: '8.0' )
-    compile project(':ejb')
+    compile ( group: 'javax', name: 'javaee-api', version: '8.0' )
+    compileOnly project(':ejb')
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
